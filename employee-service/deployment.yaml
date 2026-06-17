@@ -15,7 +15,5 @@ spec:
       containers:
       - name: employee-service
         image: srihari25/employee-service:v1
-        command: ["java"]
-        args: ["-jar","/wrong.jar"]
         ports:
         - containerPort: 8080
