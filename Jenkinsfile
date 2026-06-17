@@ -11,7 +11,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/<your-github-username>/employee-service.git'
+                url: 'https://github.com/srihari-mulakalapalli/employee-service.git'
             }
         }
 
@@ -36,6 +36,14 @@ pipeline {
             steps {
                 sh """
                 docker build -t $IMAGE_NAME:$IMAGE_TAG .
+                """
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                sh """
+                trivy image $IMAGE_NAME:$IMAGE_TAG
                 """
             }
         }
