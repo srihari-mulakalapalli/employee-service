@@ -60,7 +60,7 @@ pipeline {
                     sh '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
 
-                    docker push '$IMAGE_NAME':'$IMAGE_TAG'
+                    docker push srihari25/employee-service:${BUILD_NUMBER}
                     '''
                 }
             }
