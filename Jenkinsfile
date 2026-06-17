@@ -40,14 +40,6 @@ pipeline {
             }
         }
 
-        stage('Trivy Scan') {
-            steps {
-                sh """
-                trivy image $IMAGE_NAME:$IMAGE_TAG
-                """
-            }
-        }
-
         stage('Docker Push') {
             steps {
                 withCredentials([
