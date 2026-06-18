@@ -68,15 +68,11 @@ pipeline {
       
         stage('Update GitOps Repo') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'github-creds',
-                    usernameVariable: 'GIT_USER',
-                    passwordVariable: 'GIT_TOKEN'
-                )]) {
+                sshagent(['github-ssh']) {
                     sh '''
                     rm -rf employee-service-gitops
 
-                    git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/srihari-mulakalapalli/employee-service-gitops.git
+                    git clone git@github.com:srihari-mulakalapalli/employee-service-gitops.git
 
                     cd employee-service-gitops/k8s
 
