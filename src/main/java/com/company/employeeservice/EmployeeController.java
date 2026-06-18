@@ -8,7 +8,7 @@ public class EmployeeController {
 
     @GetMapping("/")
     public String home() {
-        return "Employee Service Running";
+        return "Employee Service Running - Version 2";
     }
 
     @GetMapping("/employees")
